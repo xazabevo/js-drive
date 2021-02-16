@@ -78,10 +78,8 @@ describe('errorHandlerFactory', () => {
     // eslint-disable-next-line no-console
     expect(console.log).to.be.calledOnce();
 
-    expect(loggerMock.fatal).to.be.calledTwice();
-
-    expect(loggerMock.fatal.getCall(0)).to.be.calledWithExactly({ err: error1 }, error1.message);
-    expect(loggerMock.fatal.getCall(1)).to.be.calledWithExactly({ err: error2 }, error2.message);
+    expect(loggerMock.fatal).to.be.calledOnceWithExactly({ err: error1 }, error1.message);
+    expect(loggerMock.error).to.be.calledOnceWithExactly({ err: error2 }, error2.message);
 
     expect(containerMock.dispose).to.be.calledOnceWithExactly();
 
